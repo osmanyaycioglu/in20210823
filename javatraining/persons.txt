@@ -1,0 +1,6 @@
+osman,yay,95,200,osmany
+ali,bakan,75,180,alibak
+ayşe,akan,60,170,ayseak
+nil,yay,95,200,nily
+veli,bakan,76,181,velibak
+mehmet,akan,100,185,mehmetak
