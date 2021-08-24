@@ -1,5 +1,6 @@
 package com.training.java.streams;
 
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -14,7 +15,8 @@ public class PersonParser {
         //        while((lineLoc = b.readLine()) != null) {
         //
         //        }
-        Map<String, Person> collectLoc = Files.readAllLines(Paths.get("persons.txt"))
+        Map<String, Person> collectLoc = Files.readAllLines(Paths.get("persons.txt"),
+                                                            Charset.forName("UTF-8"))
                                               .stream()
                                               .map(line -> line.split(","))
                                               .map(parts -> {
@@ -53,15 +55,20 @@ public class PersonParser {
                                                .filter(p -> p.getWeight() > 90)
                                                .collect(Collectors.toMap(p -> p.getUsername(),
                                                                          p -> p));
-
+        System.out.println("--------------------------------------------------");
         Map<String, Person> collectLoc4 = Files.readAllLines(Paths.get("persons.txt"))
                                                .stream()
                                                .map(line -> line.split(","))
                                                .map(PersonParser::createPerson)
                                                .filter(p -> p.getWeight() > 90)
+                                               .sorted((p1,
+                                                        p2) -> p1.getWeight() - p2.getWeight())
+                                               .peek(System.out::println)
                                                .collect(Collectors.toMap(p -> p.getUsername(),
                                                                          p -> p));
+        System.out.println("--------------------------------------------------");
         System.out.println(collectLoc4);
+
     }
 
     public static Person createPerson(final String[] parts) {

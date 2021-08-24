@@ -80,10 +80,19 @@ public class Person {
         return this;
     }
 
-
     @Override
     public String toString() {
-        return "Person [name=" + this.name + ", surname=" + this.surname + ", weight=" + this.weight + "]";
+        return "Person [name="
+               + this.name
+               + ", surname="
+               + this.surname
+               + ", weight="
+               + this.weight
+               + ", height="
+               + this.height
+               + ", username="
+               + this.username
+               + "]";
     }
 
 
