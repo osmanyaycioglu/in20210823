@@ -1,16 +1,22 @@
 package com.training.java.streams;
 
 import com.training.java.annotations.GenerateValue;
+import com.training.java.validation.CheckInt;
+import com.training.java.validation.CheckString;
 
 public class Person {
 
+    @CheckString(min = 3, max = 10)
     @GenerateValue(val = "boş")
     private String name;
+    @CheckString(min = 3, max = 20)
     @GenerateValue(val = "boş")
     private String surname;
+    @CheckInt(min = 40, max = 300)
     @GenerateValue(max = 300)
     private int    weight;
     @GenerateValue(max = 250)
+    @CheckInt(min = 50, max = 250)
     private int    height;
     @GenerateValue
     private String username;
