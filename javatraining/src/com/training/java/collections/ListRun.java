@@ -15,7 +15,6 @@ public class ListRun {
         this.myListLoc.add("ali");
         this.myListLoc.add("veli");
         String stringLoc = this.myListLoc.get(0);
-
         int sizeLoc = this.myListLoc.size();
 
     }

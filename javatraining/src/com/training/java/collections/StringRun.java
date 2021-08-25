@@ -18,12 +18,32 @@ public class StringRun {
         StringBuilder builderLoc = new StringBuilder();
         builderLoc.append("osman yaycıoğlu");
         long delta = System.currentTimeMillis();
-        for (int iLoc = 0; iLoc < 100_000; iLoc++) {
+        for (int iLoc = 0; iLoc < 1; iLoc++) {
             //            builderLoc.append(" ");
             //            builderLoc.append(iLoc);
             str1 += " " + iLoc;
+            // String concatLoc = str1.concat(" " + iLoc);
+            str1.substring(2);
         }
         System.out.println("Delta : " + (System.currentTimeMillis() - delta));
         System.out.println(builderLoc.toString());
+
+        delta = System.currentTimeMillis();
+        for (int iLoc = 0; iLoc < 100_000; iLoc++) {
+            String.format("osman %s yaycioglu %s %d",
+                          str1,
+                          str2,
+                          delta);
+            // String stringLoc = "osman " + str1 + " yaycioglu" + str2 + " " + delta;
+        }
+        System.out.println("Concat Delta : " + (System.currentTimeMillis() - delta));
+        // stringLoc += 10;
+
+        String.format("osman %s yaycioglu %s %d",
+                      str1,
+                      str2,
+                      delta);
+
+
     }
 }

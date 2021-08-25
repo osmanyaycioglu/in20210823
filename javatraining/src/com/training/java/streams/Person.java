@@ -1,5 +1,6 @@
 package com.training.java.streams;
 
+import com.training.java.annotations.MyAnnotation;
 
 public class Person extends Object {
 
@@ -7,6 +8,7 @@ public class Person extends Object {
     private String surname;
     private int    weight;
     private int    height;
+    @MyAnnotation
     private String username;
 
     public Person() {
