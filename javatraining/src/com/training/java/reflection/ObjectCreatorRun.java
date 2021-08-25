@@ -11,9 +11,22 @@ public class ObjectCreatorRun {
             System.out.println(objectLoc);
             Person createLoc = ObjectCreator.create(Person.class);
             System.out.println(createLoc);
-
-            MyObject myObjectLoc = ObjectCreator.createFromObj(new MyObject());
+            MyObject myObject2Loc = new MyObject();
+            myObject2Loc.setName("osman");
+            // myObject2Loc.setSurname("yay");
+            MyObject myObjectLoc = ObjectCreator.createFromObj(myObject2Loc);
             System.out.println(myObjectLoc);
+
+            Person personLoc = new Person();
+            if ((personLoc.getName() == null)
+                || personLoc.getName()
+                            .isEmpty()) {
+                personLoc.setName("boş");
+            }
+            //            personLoc.setName("osman");
+            //            personLoc.setSurname("yay");
+            Person personLast = ObjectCreator.createFromObj(personLoc);
+            System.out.println(personLast);
         } catch (Exception e) {
             e.printStackTrace();
         }

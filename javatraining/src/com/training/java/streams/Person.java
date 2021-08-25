@@ -1,14 +1,18 @@
 package com.training.java.streams;
 
-import com.training.java.annotations.MyAnnotation;
+import com.training.java.annotations.GenerateValue;
 
-public class Person extends Object {
+public class Person {
 
+    @GenerateValue(val = "boş")
     private String name;
+    @GenerateValue(val = "boş")
     private String surname;
+    @GenerateValue(max = 300)
     private int    weight;
+    @GenerateValue(max = 250)
     private int    height;
-    @MyAnnotation
+    @GenerateValue
     private String username;
 
     public Person() {

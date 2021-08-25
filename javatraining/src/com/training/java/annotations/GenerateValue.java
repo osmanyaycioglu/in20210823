@@ -13,8 +13,10 @@ import java.lang.annotation.Target;
           TYPE,
           FIELD
 })
-public @interface MyAnnotation {
+public @interface GenerateValue {
 
     String val() default "";
+
+    int max() default Integer.MAX_VALUE;
 
 }

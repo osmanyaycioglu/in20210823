@@ -5,15 +5,18 @@ import java.security.SecureRandom;
 import java.util.Random;
 import java.util.UUID;
 
-import com.training.java.annotations.MyAnnotation;
+import com.training.java.annotations.GenerateValue;
 
 public class ObjectCreator {
 
     public static <T> T create(final Class<T> clazz) throws Exception {
         T newInstanceLoc = clazz.newInstance();
+        //        Method[] declaredMethodsLoc = clazz.getDeclaredMethods();
+        //        Method declaredMethodLoc = clazz.getDeclaredMethod("");
+        //        Parameter[] parametersLoc = declaredMethodLoc.getParameters();
         Field[] declaredFieldsLoc = clazz.getDeclaredFields();
         for (Field fieldLoc : declaredFieldsLoc) {
-            MyAnnotation myAnnoLoc = fieldLoc.getAnnotation(MyAnnotation.class);
+            GenerateValue myAnnoLoc = fieldLoc.getAnnotation(GenerateValue.class);
             if (myAnnoLoc != null) {
                 fieldLoc.setAccessible(true);
                 Class<?> typeLoc = fieldLoc.getType();
@@ -51,30 +54,35 @@ public class ObjectCreator {
         Class<T> clazz = (Class<T>) obj.getClass();
         Field[] declaredFieldsLoc = clazz.getDeclaredFields();
         for (Field fieldLoc : declaredFieldsLoc) {
-            MyAnnotation myAnnoLoc = fieldLoc.getAnnotation(MyAnnotation.class);
+            GenerateValue myAnnoLoc = fieldLoc.getAnnotation(GenerateValue.class);
             if (myAnnoLoc != null) {
                 fieldLoc.setAccessible(true);
                 Class<?> typeLoc = fieldLoc.getType();
                 String valLoc = myAnnoLoc.val();
                 if (String.class.equals(typeLoc)) {
-                    String stringLoc = null;
-                    if (!valLoc.isEmpty()) {
-                        stringLoc = valLoc;
-                    } else {
-                        stringLoc = UUID.randomUUID()
-                                        .toString();
+                    String curStrValLoc = (String) fieldLoc.get(obj);
+                    if ((curStrValLoc == null) || curStrValLoc.isEmpty()) {
+                        String stringLoc = null;
+                        if (!valLoc.isEmpty()) {
+                            stringLoc = valLoc;
+                        } else {
+                            stringLoc = UUID.randomUUID()
+                                            .toString();
+                        }
+                        fieldLoc.set(obj,
+                                     stringLoc);
                     }
-                    fieldLoc.set(obj,
-                                 stringLoc);
                 } else if (typeLoc.getName()
                                   .equals("int")) {
+                    int maxLoc = myAnnoLoc.max();
                     Random randomLoc = new SecureRandom();
-                    int nextIntLoc = randomLoc.nextInt();
+                    int nextIntLoc = randomLoc.nextInt(maxLoc);
                     fieldLoc.setInt(obj,
                                     nextIntLoc);
                 } else if (Integer.class.equals(typeLoc)) {
+                    int maxLoc = myAnnoLoc.max();
                     Random randomLoc = new SecureRandom();
-                    int nextIntLoc = randomLoc.nextInt();
+                    int nextIntLoc = randomLoc.nextInt(maxLoc);
                     fieldLoc.set(obj,
                                  nextIntLoc);
                 }

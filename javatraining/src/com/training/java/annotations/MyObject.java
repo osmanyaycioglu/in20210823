@@ -5,13 +5,13 @@ package com.training.java.annotations;
 // @MyAnnotation
 public class MyObject {
 
-    @MyAnnotation
+    @GenerateValue
     private String  name;
-    @MyAnnotation(val = "akar")
+    @GenerateValue(val = "akar")
     private String  surname;
-    @MyAnnotation
+    @GenerateValue
     private int     val1;
-    @MyAnnotation
+    @GenerateValue
     private Integer val2;
 
     public int getVal1() {
