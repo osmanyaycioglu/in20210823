@@ -1,7 +1,7 @@
 package com.training.java.streams;
 
 
-public class Person {
+public class Person extends Object {
 
     private String name;
     private String surname;
@@ -93,6 +93,60 @@ public class Person {
                + ", username="
                + this.username
                + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (prime * result) + this.height;
+        result = (prime * result) + ((this.name == null) ? 0 : this.name.hashCode());
+        result = (prime * result) + ((this.surname == null) ? 0 : this.surname.hashCode());
+        result = (prime * result) + ((this.username == null) ? 0 : this.username.hashCode());
+        result = (prime * result) + this.weight;
+        return result;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Person other = (Person) obj;
+        if (this.height != other.height) {
+            return false;
+        }
+        if (this.name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!this.name.equals(other.name)) {
+            return false;
+        }
+        if (this.surname == null) {
+            if (other.surname != null) {
+                return false;
+            }
+        } else if (!this.surname.equals(other.surname)) {
+            return false;
+        }
+        if (this.username == null) {
+            if (other.username != null) {
+                return false;
+            }
+        } else if (!this.username.equals(other.username)) {
+            return false;
+        }
+        if (this.weight != other.weight) {
+            return false;
+        }
+        return true;
     }
 
 
