@@ -1,5 +1,6 @@
 package com.training.java.singleton;
 
+import com.training.java.enums.EnumSingleton;
 
 public class SingletonRun {
 

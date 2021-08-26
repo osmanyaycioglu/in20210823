@@ -1,4 +1,4 @@
-package com.training.java.singleton;
+package com.training.java.enums;
 
 
 public enum EGender {
