@@ -5,6 +5,12 @@ import org.springframework.stereotype.Component;
 
 
 @Component
+
+//@Controller
+//@Service
+//@Repository
+//@Configuration
+
 //@Scope("prototype")
 public class MyUsingObject {
 
