@@ -1,0 +1,13 @@
+server:
+  port: 9090
+spring:
+  task:
+    execution:
+      pool:
+        core-size: 10
+    scheduling:
+      pool:
+        size: 5
+      shutdown:
+        await-termination: true
+      thread-name-prefix: osman
