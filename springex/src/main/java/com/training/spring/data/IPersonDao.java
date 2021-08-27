@@ -22,7 +22,6 @@ public interface IPersonDao extends CrudRepository<Person, Long> {
 
     List<Person> findByNameInOrderByNameAsc(List<String> name);
 
-
     @Query("select p from Person p where p.name=?1")
     List<Person> searchByName(String name);
 
